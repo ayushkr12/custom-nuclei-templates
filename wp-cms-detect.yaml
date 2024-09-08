@@ -7,25 +7,30 @@ info:
   description: Detects if a website is running WordPress
   tags: cms,wordpress
 
-flow: http(1) || http(2) || http(3)
+flow: http(1) || http(2) || http(3) || http(4)
 
 http:
   - method: GET
     path:
-      - "{{RootURL}}"
-
+      - "{{BaseURL}}/wp-content/"
     redirects: true
     max-redirects: 3
 
+    matchers-condition: and
+
     matchers:
-      - type: regex
-        regex:
-          - "(?i)wordpress"
+      - type: status
+        status:
+          - 200
+
+      - type: size
+        size:
+          - 0
+        part: body
 
   - method: GET
     path:
-      - "{{RootURL}}/wp-admin"
-    
+      - "{{BaseURL}}/wp-admin/"
     redirects: true
     max-redirects: 3
 
@@ -36,9 +41,20 @@ http:
     
   - method: GET
     path:
-      - "{{RootURL}}/feed/"
+      - "{{BaseURL}}/feed/"
 
     matchers:
       - type: regex
         regex:
           - '(?i)<?xml version='
+          - 'name="generator" content="wordpress'
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/?feed=rss2"
+
+    matchers:
+      - type: regex
+        regex:
+          - '(?i)<?xml version='
+          - 'name="generator" content="wordpress'
