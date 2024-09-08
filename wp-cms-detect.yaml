@@ -47,7 +47,6 @@ http:
       - type: regex
         regex:
           - '(?i)<?xml version='
-          - 'name="generator" content="wordpress'
 
   - method: GET
     path:
@@ -57,4 +56,3 @@ http:
       - type: regex
         regex:
           - '(?i)<?xml version='
-          - 'name="generator" content="wordpress'
