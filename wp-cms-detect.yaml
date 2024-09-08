@@ -1,10 +1,10 @@
 id: wp-cms-detect
 
 info:
-  name: WordPress Detect
+  name: WordPress CMS Detect
   author: dat-ayush
   severity: info
-  description: Detects if a domain is running WordPress
+  description: Detects if a website is running WordPress
   tags: cms,wordpress
 
 flow: http(1) || http(2) || http(3)
