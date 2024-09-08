@@ -41,4 +41,4 @@ http:
     matchers:
       - type: regex
         regex:
-          - '<generator>https?:\/\/wordpress\.org.*</generator>'
+          - '(?i)<?xml version='
