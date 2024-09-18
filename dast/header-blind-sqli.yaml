@@ -1,10 +1,14 @@
+id: header-blind-sqli
+
 info:
   name: Header Blind SQL Injection
   author: geeknik
   severity: high
   tags: blind-sqli
+  description: |
+    This template tests for Blind SQL Injection vulnerabilities by injecting a sleep command in various HTTP headers.
 
-requests:
+http:
   - method: GET
     path:
       - "{{BaseURL}}"
