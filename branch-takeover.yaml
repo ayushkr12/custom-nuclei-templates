@@ -8,16 +8,16 @@ info:
     Detects potential subdomain takeover vulnerability on Branch.io CNAMEs pointing to custom.bnc.lt.
 
 dns:
-  - name: check-branchio-takeover
+  - name: "{{FQDN}}"
     type: CNAME
     class: inet
-    host: "{{FQDN}}"
 
-    matchers-condition: or
     matchers:
-      - type: word
-        words:
-          - "custom.bnc.lt"
       - type: dsl
         dsl:
-          - "contains(dns_answer, 'custom.bnc.lt')"
+          - "contains(cname, 'custom.bnc.lt')"
+          
+    extractors:
+      - type: dsl
+        dsl:
+          - cname
