@@ -2,7 +2,7 @@ id: open-redirect
 
 info:
   name: Open Redirect Fuzzer
-  author: dat-ayush
+  author: ayushkr12
   severity: medium
   description: |
     Fuzzes every endpoint for open redirect vulnerabilities
